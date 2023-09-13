@@ -18,7 +18,7 @@ To install Valve_Control, follow these steps:
 1. Clone this repository to your local machine:
    
     ```sh
-    git clone https://github.com/YOUR_USERNAME/Valve_Control.git
+    git clone https://github.com/jmwelshV2/Valve_Control.git
     ```
 
 2. Navigate to the directory:
