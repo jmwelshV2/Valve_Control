@@ -1,40 +1,50 @@
-#!/bin/bash
-
-echo "Starting the Valve Control testing and initial setup script..."
-sleep 2
-
-echo "Step 1: Testing individual components."
-sleep 2
-
-echo "Testing XRDesktop..."
-# (Run a command to test XRDesktop here)
-sleep 2
-
-echo "Testing OpenHMD..."
-# (Run a command to test OpenHMD here)
-sleep 2
-
-echo "Testing FreePIE..."
-# (Run a command to test FreePIE here)
-sleep 2
-
-echo "Testing Monado..."
-# (Run a command to test Monado here)
-sleep 2
-
 echo "Individual components testing completed. Please check above for any errors."
 sleep 2
 
-echo "Step 2: XRDesktop configuration."
-echo "Please configure XRDesktop according to the on-screen instructions."
-# (Run a command to open XRDesktop configuration here)
-sleep 2
+# Ask the user if they want to proceed to the configuration steps
+read -p "Would you like to proceed to the configuration steps? It is recommended to review the test results above before proceeding. (y/n): " PROCEED
 
-echo "Step 3: FreePIE input mapping."
-echo "Next, we will proceed with FreePIE input mapping."
-echo "Please follow the instructions to set up basic input mapping in FreePIE."
-# (Run a command to open FreePIE script editor here)
-sleep 2
+if [[ "$PROCEED" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    # Configuration step for XRDesktop
+    echo "Proceeding to XRDesktop configuration step..."
+    sleep 1
+    read -p "Would you like to create a new XRDesktop configuration, use the existing configuration, or skip this step? (new/use/skip): " XR_CONFIG
+    case $XR_CONFIG in
+        [Nn][Ee][Ww])
+            echo "Creating a new XRDesktop configuration..."
+            # (Here you would call the script or command to launch the XRDesktop configuration utility)
+            ;;
+        [Uu][Ss][Ee]|[Ss][Kk][Ii][Pp])
+            echo "Using the existing XRDesktop configuration..."
+            # (Here you would load the existing XRDesktop configuration)
+            ;;
+        *)
+            echo "Invalid option chosen, skipping XRDesktop configuration..."
+            ;;
+    esac
+    sleep 1
 
-echo "Testing and initial setup completed. Please review any errors and configure the settings as needed."
-echo "Refer to the documentation for further guidance."
+    # Configuration step for FreePIE
+    echo "Proceeding to FreePIE configuration step..."
+    sleep 1
+    read -p "Would you like to create a new FreePIE configuration, use the existing configuration, or skip this step? (new/use/skip): " FP_CONFIG
+    case $FP_CONFIG in
+        [Nn][Ee][Ww])
+            echo "Creating a new FreePIE configuration..."
+            # (Here you would call the script or command to launch the FreePIE configuration utility)
+            ;;
+        [Uu][Ss][Ee]|[Ss][Kk][Ii][Pp])
+            echo "Using the existing FreePIE configuration..."
+            # (Here you would load the existing FreePIE configuration)
+            ;;
+        *)
+            echo "Invalid option chosen, skipping FreePIE configuration..."
+            ;;
+    esac
+else
+    echo "Skipping the configuration steps and moving to the next part..."
+    # (Here you would add a call to the script or function to proceed to the next part)
+fi
+
+sleep 1
